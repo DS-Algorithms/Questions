@@ -1,4 +1,4 @@
-# Combinations
+# Minimum cost of tickets
  
 leetcode url: https://leetcode.com/problems/minimum-cost-for-tickets/
  
