@@ -1,4 +1,4 @@
-# 321 - Knapsack Problem 0/1
+# Knapsack Problem 0/1
 
 https://www.geeksforgeeks.org/0-1-knapsack-problem-dp-10/
 
