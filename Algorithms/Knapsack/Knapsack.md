@@ -1,6 +1,7 @@
 # Knapsack Problem 0/1
 
-https://www.geeksforgeeks.org/0-1-knapsack-problem-dp-10/
+-Problem link: https://www.geeksforgeeks.org/0-1-knapsack-problem-dp-10/
+-Data : https://people.sc.fsu.edu/~jburkardt/datasets/knapsack_01/knapsack_01.html
 
 Given a set of items where each item has a weight and a value. And given a knapsack with max weight capacity, determine the maximum value that can be placed into the knapsack without going over the capacity.
 ```
