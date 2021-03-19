@@ -72,6 +72,7 @@ public class Solution
     {
         int[] maxValues = new int[capacity + 1];
 
+        //init first row
         for (int i = weights[0]; i <= capacity; i++)
             maxValues[i] = values[0];
 
