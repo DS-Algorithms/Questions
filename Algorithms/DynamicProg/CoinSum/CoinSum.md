@@ -5,8 +5,11 @@ Given an array of coins and a target total, return how many unique ways there ar
 *  Input:  coins {Integer Array}, total {Integer}
 *  Output: {Integer}
 
-Note: You have an unlimited number of each coin type. All coins in the coin array will be unique.
-      Order does not matter. Ex: One penny and one nickel to create six cents is equivalent to one nickel and one penny
+Note: 
+ * You have an unlimited number of each coin type
+ * All coins in the coin array will be unique
+ * Order does not matter
+   - Ex: One penny and one nickel to create six cents is equivalent to one nickel and one penny
 
 # Example 1:
 
