@@ -57,3 +57,6 @@ Aux Space Complexity:    O(N)          O(K)
 `K` is the capacity of the knapsack, `N` is the number of items
 
 Once you add an item to the knapsack, you can't add it again (no replacement)
+
+# Solution
+ https://codeinterview.io/YEFOUPKQFL
