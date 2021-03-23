@@ -50,6 +50,7 @@ Diagram
 
 
 Target:           0  1  2  3  4
+zero coins:       1  0  0  0  0
 include coin 1:   1  1  1  1  1
 include coin 2:   1  1  2  2  3  
 include coin 3:   1  1  2  3  4 
@@ -69,34 +70,32 @@ pseudo
  return Dp[target];
     
   Target:           0  1  2  3  4   5   6   7   8   9    10   11    12    13    14    15    16  17   18   19    20
+
+zero coins:         1  0  0  0  0  0    0   0    0   0    0    0    0      0     0    0     0   0     0    0    0
 include coin 7:     1  0  0  0  0   0   0   1   0   0     0    0    0      0     1    0     0   0     0    0    0
 include coin 15:    1  0  0  0  0   0   0   1   0   0     0    0    0      0     1    1     0   0     0    0    0
 
-   
-  
-
 */
 
-// Time Complexity:
-// Auxiliary Space Complexity:
+// Time Complexity: O(C*T)
+// Auxiliary Space Complexity: O(T)
+// C is the number of coins
+// T is the total we need to 
+
 public class Compute
 {
-
     public static int CoinSum(int[] coins, int total)
     {
         int[] Dp = new int[total + 1];
         Dp[0] = 1;
-        for (int i = 0; i <= total; i++)
-            if (i % coins[0] == 0)
-                Dp[i] = 1;
-        for (int i = 1; i < coins.Length; i++)
+
+        for (int i = 0; i < coins.Length; i++)
         {
             for (int j = coins[i]; j <= total; j++)
                 Dp[j] += Dp[j - coins[i]];
         }
         return Dp[total];
     }
-
 }
 
 public class Test
@@ -136,8 +135,8 @@ public class Test
         {
             int[] coins = new int[] { 2, 5, 3, 6 };
             int total = 50;
-            int expected = 349;
-            Console.WriteLine($"\nCase3 input: [ {string.Join(", ", coins)} ], target:{total} ");
+            int expected = 182;
+            Console.WriteLine($"\nCase4 input: [ {string.Join(", ", coins)} ], target:{total} ");
             var actual = Compute.CoinSum(coins, total);
             Console.WriteLine($"Expected: {expected}, Actual: {actual}, Passed: {actual == expected}");
         }
