@@ -59,5 +59,5 @@ Output: 265182525
 
  
 # Solution
-Recursive: 
-Tabulation: 
+Recursive: https://codeinterview.io/NIQYVEBCKQ
+Tabulation: https://codeinterview.io/XFRRACZXXU
