@@ -1,0 +1,14 @@
+* Problem Category
+	- Recursion
+	- Dynamic Programming
+	- Arrays & Strings
+	- Dictionaries/Maps/Sets
+	- Stacks & Queues
+	- LinkedList
+	- Trees
+	- Tries
+	- Graphs
+	- Matrix
+	- Heaps
+	- Sorting Algorithms
+	- Other
