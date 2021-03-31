@@ -45,5 +45,6 @@ word1 and word2 consist of lowercase English letters.
 
  
 # Solution
-Recursive: https://codeinterview.io/OVKGHIFEGQ
-Tabulation: 
+Recursive bottom up	: https://codeinterview.io/OVKGHIFEGQ
+Recursive top down	: https://codeinterview.io/XXATTCHBHP
+Tabulation			: https://codeinterview.io/SDXTZHUYIN
