@@ -31,4 +31,5 @@ s consists only of lowercase English letters.
  ```
  
 # Solution
-Recursive: https://codeinterview.io/HZFNDLCSZI
+Recursive: https://codeinterview.io/VNSLSOZMZH
+Tabulation: https://codeinterview.io/KXTXTIPDGG
