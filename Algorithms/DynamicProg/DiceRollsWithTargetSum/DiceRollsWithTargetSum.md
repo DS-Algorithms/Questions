@@ -61,5 +61,5 @@ The answer must be returned modulo 10^9 + 7.
 
  
 # Solution
-Recursive	: https://codeinterview.io/ONSTCLXXLH
-Tabulation	: https://codeinterview.io/NGSIUQGEXG
+* Recursive	: https://codeinterview.io/ONSTCLXXLH
+* Tabulation	: https://codeinterview.io/NGSIUQGEXG
