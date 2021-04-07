@@ -3,7 +3,7 @@
 #### Question
 You have d dice, and each die has f faces numbered 1, 2, ..., f.
 
-Return the number of possible ways (out of f^d total ways) modulo 10^9 + 7 to roll the dice so the sum of the face up numbers equals target.
+Return the number of possible ways (out of f^d total ways) modulo (10^9 + 7) to roll the dice so the sum of the face up numbers equals target.
 
 leetcode url: https://leetcode.com/problems/number-of-dice-rolls-with-target-sum/
 
