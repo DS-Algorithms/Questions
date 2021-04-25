@@ -99,13 +99,10 @@ public class Solution
         for (int j = i; j >= 0; j--)
         {
             var curr = _s.Substring(j, i - j + 1);
-            if (_wordDict.Contains(curr))
+            if (_wordDict.Contains(curr) && Recurse(j - 1))
             {
-                if (Recurse(j - 1))
-                {
-                    _cache[i] = true;
-                    return _cache[i];
-                }
+                _cache[i] = true;
+                return _cache[i];
             }
         }
         _cache[i] = false;
