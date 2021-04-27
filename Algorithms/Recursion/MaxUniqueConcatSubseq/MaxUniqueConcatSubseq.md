@@ -29,6 +29,7 @@ Explanation: Possible solutions are "chaers" and "acters".
 ```
 Input: arr = ["abcdefghijklmnopqrstuvwxyz"]
 Output: 26
+```
 
 # Constraints:
 
