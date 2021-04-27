@@ -42,5 +42,5 @@ All the strings of wordDict are unique.
  ```
  
 # Solution
-Recursive: https://codeinterview.io/DRYWBESSXL
-Tabulation: https://codeinterview.io/HGQQNXTLVE
+ - Recursive: https://codeinterview.io/DRYWBESSXL
+ - Tabulation: https://codeinterview.io/HGQQNXTLVE
