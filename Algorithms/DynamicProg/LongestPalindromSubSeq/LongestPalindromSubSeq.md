@@ -1,6 +1,6 @@
 # Longest Palindromic Subsequence
  
-leetcode url: 
+leetcode url: https://leetcode.com/problems/longest-palindromic-subsequence/
  
 #### Question
 Given a string s, find the longest palindromic subsequence's length in s.
