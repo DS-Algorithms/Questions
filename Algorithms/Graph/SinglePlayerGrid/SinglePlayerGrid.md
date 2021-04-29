@@ -27,7 +27,7 @@ Finally, if no tiles around the selected tile have  ithe same number, only the s
   5   5   5   4
   2   5  [7]  5
  ```
- 
+ Expected Output: 5
  # Example 2:
 
 ```
@@ -39,8 +39,7 @@ Input:
 0 1 2 2 2 1 3
 0 1 1 1 1 1 3
 0 0 0 0 0 0 0
-Expected Output:
-13
+Expected Output: 13
 ```
 
  # Example 3:
@@ -54,8 +53,7 @@ Input:
 0 1 2 2 2 1 3
 0 1 1 1 1 1 3
 0 0 0 0 0 0 0
-Expected Output:
-13
+Expected Output: 13
 ```
 
  # Example 4:
@@ -69,8 +67,7 @@ Input:
 0 1 2 2 2 1 3
 0 1 1 1 1 1 3
 0 0 0 0 0 0 0
-Expected Output:
-12
+Expected Output: 12
 ```
 
 # Constraints:
