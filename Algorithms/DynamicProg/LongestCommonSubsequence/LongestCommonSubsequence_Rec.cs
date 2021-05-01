@@ -1,8 +1,10 @@
 /*
 https://leetcode.com/problems/longest-common-subsequence/
 https://codeinterview.io/NXINHRXXIS
+Recursive Solution
 */
 using System;
+using System.Collections.Generic;
 
 public class Test
 {
@@ -12,6 +14,24 @@ public class Test
         {
             string text1 = "abcde", text2 = "ace";
             int expected = 3;
+            var sol = new Solution();
+            var actual = sol.LongestCommonSubsequence(text1, text2);
+            Console.WriteLine($"Expected: {expected}, Actual: {actual}");
+        }
+
+        //case 2
+        {
+            string text1 = "abc", text2 = "abc";
+            int expected = 3;
+            var sol = new Solution();
+            var actual = sol.LongestCommonSubsequence(text1, text2);
+            Console.WriteLine($"Expected: {expected}, Actual: {actual}");
+        }
+
+        //case 3
+        {
+            string text1 = "abc", text2 = "def";
+            int expected = 0;
             var sol = new Solution();
             var actual = sol.LongestCommonSubsequence(text1, text2);
             Console.WriteLine($"Expected: {expected}, Actual: {actual}");
@@ -44,8 +64,30 @@ public class Test
 
 public class Solution
 {
+    private string _s1;
+    private string _s2;
     public int LongestCommonSubsequence(string text1, string text2)
     {
-        return 0;
+        _s1 = text1;
+        _s2 = text2;
+
+        return Recurse(text1.Length - 1, text2.Length - 1);
+    }
+    private Dictionary<(int, int), int> _cache = new Dictionary<(int, int), int>();
+    private int Recurse(int i, int j)
+    {
+        if (i < 0 || j < 0) return 0;
+
+        if (_cache.ContainsKey((i, j)))
+            return _cache[(i, j)];
+
+        if (_s1[i] == _s2[j])
+        {
+            _cache[(i, j)] = 1 + Recurse(i - 1, j - 1);
+            return _cache[(i, j)];
+        }
+
+        _cache[(i, j)] = Math.Max(Recurse(i - 1, j), Recurse(i, j - 1));
+        return _cache[(i, j)];
     }
 }
