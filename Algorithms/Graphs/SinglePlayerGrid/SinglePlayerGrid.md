@@ -9,7 +9,6 @@ You're developing a one-player game for people to pass the time with. The player
 The player selects one of these tiles, and that tile will disappear, along with all the connected tiles of the same number. Tiles can be connected adjacently up, down, left, or right.
 Write a function that takes in a grid of tiles, and the row and column indexes of a selected tile on the grid, and returns the number of tiles that will disappear.
 The grid is guaranteed to be rectangular. All values in the grid will be integers between 0 and 9. The input row and column are zero-indexed integers, and will always be on the grid.
-subsequence is a sequence that can be derived from another sequence by deleting some or no elements without changing the order of the remaining elements.
 
 # Example 1:
 
@@ -22,7 +21,7 @@ If the 5 just below it is selected (row 1 and column 0), these four tiles disapp
   4   4   4   4
  [5] >5< >5<  4
   2  >5<  7   5
-Finally, if no tiles around the selected tile have  ithe same number, only the selected tile disappears. Here, if we choose the 7 at row 2 column 2, we return 1.
+Finally, if no tiles around the selected tile have the same number, only the selected tile disappears. Here, if we choose the 7 at row 2 column 2, we return 1.
   4   4   4   4
   5   5   5   4
   2   5  [7]  5
