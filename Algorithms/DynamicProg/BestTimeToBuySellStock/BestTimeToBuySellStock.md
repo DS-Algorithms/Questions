@@ -33,5 +33,8 @@ Output: 0
  ```
  
 # Solution
-* Recursive: https://codeinterview.io/PZAPYIQAAQ
+* Recursive: 
+ - Bottom up: https://codeinterview.io/PZAPYIQAAQ
+ - Top down: https://codeinterview.io/THJGCAWFMT
+
 * Tabulation: 
