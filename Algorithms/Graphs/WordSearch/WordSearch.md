@@ -10,8 +10,8 @@ The word can be constructed from letters of sequentially adjacent cells, where a
 
 ```
 Input: board = [["A","B","C","E"],
-				["S","F","C","S"],
-				["A","D","E","E"]], word = "ABCCED"
+		["S","F","C","S"],
+		["A","D","E","E"]], word = "ABCCED"
 Output: true
  ```
  
@@ -19,8 +19,8 @@ Output: true
 
 ```
 Input: board = [["A","B","C","E"],
-				["S","F","C","S"],
-				["A","D","E","E"]], word = "SEE"
+		["S","F","C","S"],
+		["A","D","E","E"]], word = "SEE"
 Output: true
 ```
 
@@ -28,8 +28,8 @@ Output: true
 
 ```
 Input: board = [["A","B","C","E"],
-				["S","F","C","S"],
-				["A","D","E","E"]], word = "ABCB"
+		["S","F","C","S"],
+		["A","D","E","E"]], word = "ABCB"
 Output: false
 ```
 
