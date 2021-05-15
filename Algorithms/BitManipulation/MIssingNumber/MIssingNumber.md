@@ -48,4 +48,4 @@ Explanation: n = 1 since there is 1 number, so all numbers are in the range [0,1
  ```
  
 # Solution
-* Recursive: https://codeinterview.io/UNYQUYGKQN
+* https://codeinterview.io/UNYQUYGKQN
