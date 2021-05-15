@@ -49,8 +49,19 @@ public class Test
 
 public class Solution
 {
+    /*
+      If XOR is performed on to a number with itself it results in 0
+       eg: 3 ^ 3 = 0
+      To find the missig number
+      we first XOR all numbers from 0 to n
+      then XOR each number in the nums array
+      
+      the resulting number would be the missing number.
+      Reference: https://www.freecodecamp.org/news/unmasking-bitmasked-dynamic-programming-25669312b77b/
+    */
     public int MissingNumber(int[] nums)
     {
+        // as the length of nums array is 1 less that n+1 (for values 0 ... n)
         var missingNum = nums.Length;
         for (int i = 0; i < nums.Length; i++)
         {
