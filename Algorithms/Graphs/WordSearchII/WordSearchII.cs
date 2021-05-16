@@ -1,6 +1,6 @@
 /*
   https://leetcode.com/problems/word-search-ii/
-  https://codeinterview.io/KFCJBACNMD
+  https://codeinterview.io/LAQCBTHYSH
 */
 
 using System;
@@ -179,36 +179,36 @@ public class Solution
             for (int j = 0; j < board[0].Length; j++)
             {
                 var visited = new bool[board.Length, board[0].Length];
-                Dfs(i, j, new StringBuilder(), visited);
+                Dfs(i, j, new StringBuilder(), _trie.Root, visited);
             }
         }
         return _result.ToList();
     }
 
-    public void Dfs(int row, int col, StringBuilder prefix, bool[,] visited)
+    public void Dfs(int row, int col, StringBuilder prefix, TrieNode curNode, bool[,] visited)
     {
         if (row < 0 || row >= _board.Length || col < 0 || col >= _board[0].Length)
             return;
         if (visited[row, col])
             return;
 
-        prefix.Append(_board[row][col]);
-        var curPrefix = prefix.ToString();
+        if (!curNode.Next.ContainsKey(_board[row][col]))
+            return;
 
         visited[row, col] = true;
-        var node = _trie.Search(curPrefix);
-        if (node != null)
+        prefix.Append(_board[row][col]);
+        var node = curNode.Next[_board[row][col]];
+        if (node.IsEnd)
         {
-            if (node.IsEnd)
-            {
-                _result.Add(curPrefix);
-            }
-
-            Dfs(row, col - 1, prefix, visited);
-            Dfs(row, col + 1, prefix, visited);
-            Dfs(row - 1, col, prefix, visited);
-            Dfs(row + 1, col, prefix, visited);
+            _result.Add(prefix.ToString());
         }
+
+        Dfs(row, col - 1, prefix, node, visited);
+        Dfs(row, col + 1, prefix, node, visited);
+        Dfs(row - 1, col, prefix, node, visited);
+        Dfs(row + 1, col, prefix, node, visited);
+
+        //Back track
         prefix.Length--;
         visited[row, col] = false;
     }
@@ -217,11 +217,7 @@ public class Solution
         public TrieNode Root;
         public Trie()
         {
-            Root = new TrieNode
-            {
-                IsEnd = false,
-                Next = new Dictionary<char, TrieNode>()
-            };
+            Root = new TrieNode();
         }
 
         /*
@@ -248,46 +244,19 @@ public class Solution
             {
                 if (!cur.Next.ContainsKey(word[i]))
                 {
-                    var node = new TrieNode
-                    {
-                        IsEnd = false,
-                        Next = new Dictionary<char, TrieNode>()
-                    };
+                    var node = new TrieNode();
                     cur.Next.Add(word[i], node);
                 }
                 cur = cur.Next[word[i]];
             }
             cur.IsEnd = true;
         }
-
-        /*
-          cur = Root
-          loop through each char on prefix
-          if !cur.Next.Contains(word[i])
-            return null
-          cur = cur.Next[word[i]]
-
-          return cur
-        */
-        public TrieNode Search(string prefix)
-        {
-            var cur = Root;
-            for (int i = 0; i < prefix.Length; i++)
-            {
-                if (!cur.Next.ContainsKey(prefix[i]))
-                {
-                    return null;
-                }
-                cur = cur.Next[prefix[i]];
-            }
-            return cur;
-        }
     }
 
     public class TrieNode
     {
         public bool IsEnd;
-        public Dictionary<char, TrieNode> Next;
+        public Dictionary<char, TrieNode> Next = new Dictionary<char, TrieNode>();
     }
 }
 

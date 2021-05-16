@@ -38,4 +38,5 @@ All the strings of words are unique.
  ```
  
 # Solution
-* https://codeinterview.io/KFCJBACNMD
+* DFS with backtracking: https://codeinterview.io/KFCJBACNMD
+* Optimized: https://codeinterview.io/LAQCBTHYSH
