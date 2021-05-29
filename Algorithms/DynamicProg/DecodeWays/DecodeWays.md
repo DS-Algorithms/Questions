@@ -64,3 +64,4 @@ Explanation: "06" cannot be mapped to "F" because of the leading zero ("6" is di
 # Solution
 * Recursive: https://codeinterview.io/TUOZSKLKHB
 * Tabulation: https://codeinterview.io/ERFREERRLN
+* Tabulation Optimized: https://codeinterview.io/FIJHPOYIXR
