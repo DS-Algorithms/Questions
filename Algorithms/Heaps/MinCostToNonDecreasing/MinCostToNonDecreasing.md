@@ -34,3 +34,5 @@ output = 1
  -Recursive1: https://codeinterview.io/VWRCWDXEIZ
  -Recursive2: https://codeinterview.io/WLRIPEDKZD
  -Heap   : https://codeinterview.io/QXEVTLTUEO
+ https://www.youtube.com/watch?v=p8RxN6Y9OOA
+https://codeforces.com/blog/entry/77298
