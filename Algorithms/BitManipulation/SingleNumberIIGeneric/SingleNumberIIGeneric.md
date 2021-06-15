@@ -1,25 +1,36 @@
-# 137. Single Number II
- 
-leetcode url: https://leetcode.com/problems/single-number-ii/
  
 #### Question
-Given an integer array nums where every element appears three times except for one, which appears exactly once. Find the single element and return it.
-
-You must implement a solution with a linear runtime complexity and use only constant extra space.
+    Given a list of numbers and inputs 'm' and 'k' all numbers repeat 'm' times except one that repeats 'k' times
+    find the number that repeats 'k' times
 # Example 1:
 
 ```
-Input: nums = [2,2,3,2]
+Input: nums = [2, 2, 3, 3, 3, 2,2]
+m=4, k=3
 Output: 3
  ```
  
  # Example 2:
 
 ```
-Input: nums = [0,1,0,1,0,1,99]
+Input: nums = [0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 99, 99]
+m=5, k=2
 Output: 99
 ```
+ # Example 3:
 
+```
+Input: nums = [30000, 500, 100, 30000, 100, 30000, 100]
+m=3, k=1
+Output: 500
+```
+ # Example 4:
+
+```
+Input: nums = [2, 2, 3, 1,1]
+m=2, k=1
+Output: 3
+```
 
 # Constraints:
 
