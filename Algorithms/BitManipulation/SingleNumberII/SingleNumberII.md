@@ -32,6 +32,6 @@ Output: 99
 # Solution
 * Build results bits: https://codeinterview.io/UFKELLZYUM
 * Xor				: https://codeinterview.io/YSNDKLUBVJ
-*Ref1				: https://leetcode.com/problems/single-number-ii/discuss/43295/Detailed-explanation-and-generalization-of-the-bitwise-operation-method-for-single-numbers
-*Ref2				: https://leetcode.com/problems/single-number-ii/discuss/43294/Challenge-me-thx
-*Ref3				: https://just4once.gitbooks.io/leetcode-notes/content/leetcode/bit-manipulation/137-single-number-ii.html
+* Ref1				: https://leetcode.com/problems/single-number-ii/discuss/43295/Detailed-explanation-and-generalization-of-the-bitwise-operation-method-for-single-numbers
+* Ref2				: https://leetcode.com/problems/single-number-ii/discuss/43294/Challenge-me-thx
+* Ref3				: https://just4once.gitbooks.io/leetcode-notes/content/leetcode/bit-manipulation/137-single-number-ii.html
