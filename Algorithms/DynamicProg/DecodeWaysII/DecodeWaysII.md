@@ -59,6 +59,6 @@ Hence, there are a total of (6 * 2) + (3 * 1) = 12 + 3 = 15 ways to decode "2*".
  ```
  
 # Solution
-* Recursive: 
-* Tabulation: 
-* Tabulation Optimized: 
+* Recursive: https://codeinterview.io/YJMLCBQLST
+* Tabulation: https://codeinterview.io/XSZDFPAMQM
+* Tabulation Optimized: https://codeinterview.io/WTFDHMCOMY
