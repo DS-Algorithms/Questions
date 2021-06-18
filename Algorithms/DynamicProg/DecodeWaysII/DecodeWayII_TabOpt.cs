@@ -181,7 +181,7 @@ public class Solution
                     result1 = pre;
             }
 
-            result1 %= 1000000007;
+            // result1 %= 1000000007;      
             if (i == 0 || s[i - 1] == '0')
             {
                 prepre = pre;
@@ -240,7 +240,7 @@ public class Solution
                 else
                     result2 = 0;
             }
-            result2 %= 1000000007;
+            // result2 %= 1000000007;
             prepre = pre;
             pre = (result1 + result2) % 1000000007;
         }
