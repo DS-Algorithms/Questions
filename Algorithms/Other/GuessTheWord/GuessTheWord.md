@@ -44,4 +44,5 @@ Output: You guessed the secret word correctly.
  ```
  
 # Solution
-* https://codeinterview.io/PBOUCOKSKV
+* Remove words with a different match count: https://codeinterview.io/PBOUCOKSKV
+* Use a word with min 0 matches for guess: https://codeinterview.io/UIQPGLULEA

@@ -1,3 +1,8 @@
+/*
+https://leetcode.com/problems/guess-the-word/submissions/
+https://codeinterview.io/PBOUCOKSKV
+*/
+
 using System;
 using System.Collections.Generic;
 
@@ -33,6 +38,34 @@ public class Test
 			var sol = new Solution();
 			sol.FindSecretWord(input, master);
 		}
+		// Case3
+		{
+			var input = new string[]{"pzrooh","aaakrw","vgvkxb","ilaumf","snzsrz","qymapx","hhjgwz","mymxyu","jglmrs","yycsvl","fuyzco",
+	  "ivfyfx","hzlhqt","ansstc","ujkfnr","jrekmp","himbkv","tjztqw","jmcapu","gwwwmd","ffpond","ytzssw","afyjnp","ttrfzi","xkwmsz",
+	  "oavtsf","krwjwb","bkgjcs","vsigmc","qhpxxt","apzrtt","posjnv","zlatkz","zynlqc","czajmi","smmbhm","rvlxav","wkytta","dzkfer",
+	  "urajfh","lsroct","gihvuu","qtnlhu","ucjgio","xyycvd","fsssoo","kdtmux","bxnppe","usucra","hvsmau","gstvvg","ypueay","qdlvod",
+	  "djfbgs","mcufib","prohkc","dsqgms","eoasya","kzplbv","rcuevr","iwapqf","ucqdac","anqomr","msztnf","tppefv","mplbgz","xnskvo",
+	  "euhxrh","xrqxzw","wraxvn","zjhlou","xwdvvl","dkbiys","zbtnuv","gxrhjh","ctrczk","iwylwn","wefuhr","enlcrg","eimtep","xzvntq",
+	  "zvygyf","tbzmzk","xjptby","uxyacb","mbalze","bjosah","ckojzr","ihboso","ogxylw","cfnatk","zijwnl","eczmmc","uazfyo","apywnl",
+	  "jiraqa","yjksyd","mrpczo","qqmhnb","xxvsbx"};
+			var master = new Master("anqomr", 10);
+			var sol = new Solution();
+			sol.FindSecretWord(input, master);
+		}
+		// Case4
+		{
+			var input = new string[]{"gaxckt","trlccr","jxwhkz","ycbfps","peayuf","yiejjw","ldzccp","nqsjoa","qrjasy","pcldos","acrtag",
+	  "buyeia","ubmtpj","drtclz","zqderp","snywek","caoztp","ibpghw","evtkhl","bhpfla","ymqhxk","qkvipb","tvmued","rvbass","axeasm",
+	  "qolsjg","roswcb","vdjgxx","bugbyv","zipjpc","tamszl","osdifo","dvxlxm","iwmyfb","wmnwhe","hslnop","nkrfwn","puvgve","rqsqpq",
+	  "jwoswl","tittgf","evqsqe","aishiv","pmwovj","sorbte","hbaczn","coifed","hrctvp","vkytbw","dizcxz","arabol","uywurk","ppywdo",
+	  "resfls","tmoliy","etriev","oanvlx","wcsnzy","loufkw","onnwcy","novblw","mtxgwe","rgrdbt","ckolob","kxnflb","phonmg","egcdab",
+	  "cykndr","lkzobv","ifwmwp","jqmbib","mypnvf","lnrgnj","clijwa","kiioqr","syzebr","rqsmhg","sczjmz","hsdjfp","mjcgvm","ajotcx",
+	  "olgnfv","mjyjxj","wzgbmg","lpcnbj","yjjlwn","blrogv","bdplzs","oxblph","twejel","rupapy","euwrrz","apiqzu","ydcroj","ldvzgq",
+	  "zailgu","xgqpsr","wxdyho","alrplq","brklfk"};
+			var master = new Master("hbaczn", 10);
+			var sol = new Solution();
+			sol.FindSecretWord(input, master);
+		}
 	}
 }
 
@@ -51,11 +84,15 @@ public class Test
   FindSecretWord
     
     words = wordList.Clone()
+    
     for i= 0 to 10
-    shuffle the words
+    pick a random word
      int hits = master.Guess(words[0])
+     if(hit == 6) return
      filtered = {}
      for(each word in words)
+       if it is the guessedWord
+          continue
        if(GetMatches(word,words[j]) == hits)
           filtered.Add(words[j])
           
@@ -67,24 +104,30 @@ public class Solution
 	public void FindSecretWord(string[] wordlist, Master master)
 	{
 		var words = (string[])wordlist.Clone();
-		words = Shuffle(words);
+		var rand = new Random();
+
 		for (int i = 0; i < 10; i++)
 		{
-			int matches = master.Guess(words[0]);
+			var guessIndex = rand.Next(words.Length);
+			int hits = master.Guess(words[guessIndex]);
+			// Console.WriteLine($"GuessIndex: {guessIndex}, guess: {words[guessIndex]}, words.Length: {words.Length}, prevMatch:{hits}");
 			var filtered = new List<string>();
 
-			if (matches == 6)
+			if (hits == 6)
 			{
-				Console.WriteLine($"Passed: secret word is: {words[0]}");
+				Console.WriteLine($"Passed: secret word is: {words[guessIndex]}");
 				return;
 			}
 
-			foreach (var word in words)
+			for (int j = 0; j < words.Length; j++)
 			{
-				if (GetMatches(word, words[0]) == matches)
-					filtered.Add(word);
+				if (j == guessIndex)
+					continue;
+				if (GetMatches(words[j], words[guessIndex]) == hits)
+					filtered.Add(words[j]);
 			}
 			words = filtered.ToArray();
+			guessIndex = 0;
 		}
 	}
 
@@ -97,21 +140,6 @@ public class Solution
 				count++;
 		}
 		return count;
-	}
-
-	public string[] Shuffle(string[] words)
-	{
-		var result = (string[])words.Clone();
-		var rand = new Random();
-		for (int i = 0; i < result.Length; i++)
-		{
-			var next = rand.Next(result.Length);
-			// Console.WriteLine($"next: {next}");
-			var temp = result[i];
-			result[i] = result[next];
-			result[next] = temp;
-		}
-		return result;
 	}
 }
 
