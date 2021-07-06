@@ -82,6 +82,8 @@ public class Solution
     return repVars[k]
     
     */
+    //Time complexity: n*m*m
+    //space complexity: m
     public int SingleNumber(int[] nums, int m, int k)
     {
         if (k >= m)
