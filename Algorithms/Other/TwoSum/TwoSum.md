@@ -33,4 +33,4 @@ Output: [1,2]
  ```
  
 # Solution
-* https://codeinterview.io/KJWFGWNTHZ
+* https://codeinterview.io/SRDPNWGKHA
