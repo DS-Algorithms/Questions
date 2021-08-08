@@ -23,7 +23,7 @@ For example, given the above Employee table, the query should return 200 as the 
 
  # Schema:
 ```SQL
-Create table If Not Exists Employee (Id int, Salary int);
+Create table Employee (Id int, Salary int);
 Truncate table Employee;
 insert into Employee (Id, Salary) values ('1', '100');
 insert into Employee (Id, Salary) values ('2', '200');
