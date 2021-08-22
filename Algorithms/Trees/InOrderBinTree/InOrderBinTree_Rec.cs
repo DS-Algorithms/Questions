@@ -1,3 +1,7 @@
+using System.Collections.Generic;
+using System;
+using System.Linq;
+
 class Test
 {
 	static void Main()
