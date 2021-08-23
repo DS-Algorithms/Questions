@@ -24,7 +24,8 @@ using System.Linq;
  ==========
  Do a pre-order traversal
     Add cur node to _result
-  - do right node before left node
+  - reverse the order of adding child nodes to stack (ie do left node before right node)
+  note: for pre-order we added right node before left to the stack so that left node gets processed first when popped from stack
  reverse _results
 
  psuedo code
