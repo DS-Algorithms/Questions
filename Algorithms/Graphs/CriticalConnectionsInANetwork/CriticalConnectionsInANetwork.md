@@ -35,4 +35,5 @@ Output: [[0,1]]
  ```
  
 # Solution
- * BruteForce [CriticalConnectionsInANetwork_BruteForce](CriticalConnectionsInANetwork_BruteForce.cs)
+ * BruteForce				: [CriticalConnectionsInANetwork_BruteForce](CriticalConnectionsInANetwork_BruteForce.cs)
+ * DFS with cycle detection : [CriticalConnectionsInANetwork_DfsWCycleDetection](CriticalConnectionsInANetwork_DfsWCycleDetection.cs)
