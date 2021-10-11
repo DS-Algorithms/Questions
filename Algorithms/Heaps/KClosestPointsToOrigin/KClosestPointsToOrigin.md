@@ -39,5 +39,5 @@ Explanation: The answer [[-2,4],[3,3]] would also be accepted.
  
  # Solutions:
  * Sort [KClosestPointsToOrigin_Sort](KClosestPointsToOrigin_Sort.cs)
- * QuickSelect: [KClosestPointsToOrigin_QuikSelect](KClosestPointsToOrigin_QSel.cs)
+ * QuickSelect: [KClosestPointsToOrigin_QuickSelect](KClosestPointsToOrigin_QSel.cs)
  * Heap: [KClosestPointsToOrigin_Heap](KClosestPointsToOrigin_Heap.cs)
