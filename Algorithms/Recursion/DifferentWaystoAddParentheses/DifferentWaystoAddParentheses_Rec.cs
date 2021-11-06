@@ -1,3 +1,32 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+public static class Test
+{
+    public static void Main()
+    {
+        //case 1
+        {
+            var expression = "2-1-1";
+            var sol = new Solution();
+            var actual = sol.DiffWaysToCompute(expression);
+            var expected = new List<int> { 0, 2 };
+            Console.WriteLine($"Expected: [{string.Join(", ", expected)}]");
+            Console.WriteLine($"Actual  : [{string.Join(", ", actual)}]");
+        }
+        //case 2
+        {
+            var expression = "2*3-4*5";
+            var sol = new Solution();
+            var actual = sol.DiffWaysToCompute(expression);
+            var expected = new List<int> { -34, -14, -10, -10, 10 };
+            Console.WriteLine($"Expected: [{string.Join(", ", expected)}]");
+            Console.WriteLine($"Actual  : [{string.Join(", ", actual)}]");
+        }
+    }
+}
+
 public class Solution
 {
     public IList<int> DiffWaysToCompute(string expression)
@@ -61,9 +90,12 @@ public class Solution
          
       return result;
     */
-
+    private Dictionary<string, List<int>> _cache = new Dictionary<string, List<int>>();
     public List<int> Recurse(string s)
     {
+        if (_cache.ContainsKey(s))
+            return _cache[s];
+
         var result = new List<int>();
         var oper = '#';
         List<int> leftResults = null;
@@ -100,7 +132,7 @@ public class Solution
 
         if (oper == '#')
             result.Add(int.Parse(s));
-
-        return result;
+        _cache[s] = result;
+        return _cache[s];
     }
 }
