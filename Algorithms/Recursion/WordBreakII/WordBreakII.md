@@ -40,4 +40,5 @@ Output: []
  
  # Solutions:
  * Recursive: [WordBreakII_Rec](WordBreakII_Rec.cs)
+ * Recursion with Trie: [WordBreakII_RecTrie](WordBreakII_RecTrie.cs)
 
