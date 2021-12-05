@@ -59,4 +59,4 @@ Output: [4]
  
  # Solutions:
  * List as stack [SlidingWindowMaximum_List](SlidingWindowMaximum_List.cs)
- * Doubly linked list  [SlidingWindowMaximum_DoublyLL](SlidingWindowMaximum_DoublyLLs.cs)
+ * Doubly linked list  [SlidingWindowMaximum_DoublyLL](SlidingWindowMaximum_DoublyLL.cs)
