@@ -1,11 +1,93 @@
-/* Implement a Binary Heap:
- * Supported Operations are:
- * Insert       : Inserts a new emlement to the heap satisfying the heap invariant
- * RemovePeak   : Removes the root of the heap
- */
-
 using System;
 using System.Collections.Generic;
+
+public class MedianFinder
+{
+    private Heap _minHeap;
+    private Heap _maxHeap;
+    private bool _even;
+
+    public MedianFinder()
+    {
+        _minHeap = new Heap("min");
+        _maxHeap = new Heap("max");
+        _even = true;
+
+    }
+
+    /* 
+     Add new value to maxHeap
+     if even is true (new value will make it odd)
+       if(newval is greater than maxHeap[0]) then
+         push to minHeap
+       else
+         add to maxHeap and push maxHeap[0] to minHeap
+    else 
+        add to maxHeap and push maxHeap[0] to minHeap
+     
+     toggle even
+      
+    */
+    public void AddNum(int num)
+    {
+        if (_even)
+        {
+            if (_maxHeap.Size() == 0 || _maxHeap.Peek() < num)
+            {
+                _minHeap.Insert(num);
+            }
+            else
+            {
+                _maxHeap.Insert(num);
+                _minHeap.Insert(_maxHeap.RemovePeak());
+            }
+        }
+        else
+        {
+            if (_minHeap.Peek() > num)
+            {
+                _maxHeap.Insert(num);
+            }
+            else
+            {
+                _minHeap.Insert(num);
+                _maxHeap.Insert(_minHeap.RemovePeak());
+            }
+        }
+
+        _even = !_even;
+
+    }
+
+    /*
+     if even then minHeap[0] + maxHeap[0] /2 
+     else minHeap[0]
+    */
+    public double FindMedian()
+    {
+        double result = 0.0;
+        if (_even)
+        {
+            double mid1 = _maxHeap.Peek();
+            double mid2 = _minHeap.Peek();
+            result = (mid1 + mid2) / 2;
+        }
+        else
+        {
+            result = _minHeap.Peek();
+        }
+
+        return result;
+    }
+}
+
+
+/**
+ * Your MedianFinder object will be instantiated and called as such:
+ * MedianFinder obj = new MedianFinder();
+ * obj.AddNum(num);
+ * double param_2 = obj.FindMedian();
+ */
 
 public class Heap
 {
@@ -164,80 +246,24 @@ public class Heap
     }
 }
 
-public static class Test
+public class Test
 {
     public static void Main()
     {
-        // //case 1
-        // // min-Heap supports insert
-        // {
-        //     var minHeap = new Heap("min");
-        //     minHeap.Insert(4);
-        //     minHeap.Insert(2);
-        //     minHeap.Insert(3);
-        //     minHeap.Insert(8);
-        //     minHeap.Insert(1);
-        //     minHeap.Insert(6);
-        //     minHeap.Insert(2);
-        //     minHeap.Print();
-        // }
-
-        // //case 2
-        // // max-Heap supports insert
-        // {
-        //     var maxHeap = new Heap("max");
-        //     maxHeap.Insert(4);
-        //     maxHeap.Insert(2);
-        //     maxHeap.Insert(3);
-        //     maxHeap.Insert(8);
-        //     maxHeap.Insert(1);
-        //     maxHeap.Insert(6);
-        //     maxHeap.Insert(2);
-        //     maxHeap.Print();
-        // }
-
-        // //case 3
-        // // min-Heap supports Remove
-        // {
-        //     var minHeap = new Heap("min");
-        //     minHeap.Insert(4);
-        //     minHeap.Insert(2);
-        //     minHeap.Insert(3);
-        //     minHeap.Insert(8);
-        //     minHeap.Insert(1);
-        //     minHeap.Insert(6);
-        //     minHeap.Insert(2);
-        //     minHeap.Print();
-
-        //     var result = minHeap.RemovePeak();
-        //     Console.WriteLine($"result: {result}");
-        //     minHeap.Print();
-
-        //     result = minHeap.RemovePeak();
-        //     Console.WriteLine($"result: {result}");
-        //     minHeap.Print();
-        // }
-
-        //case 4
-        // max-Heap supports insert
+        //case 1
         {
-            var maxHeap = new Heap("max");
-            maxHeap.Insert(4);
-            maxHeap.Insert(2);
-            maxHeap.Insert(3);
-            maxHeap.Insert(8);
-            maxHeap.Insert(1);
-            maxHeap.Insert(6);
-            maxHeap.Insert(2);
-            maxHeap.Print();
+            var medianFinder = new MedianFinder();
+            medianFinder.AddNum(1);
+            medianFinder.AddNum(2);
 
-            var result = maxHeap.RemovePeak();
-            Console.WriteLine($"result: {result}");
-            maxHeap.Print();
+            var actual = medianFinder.FindMedian();
+            var expected = 1.5;
+            Console.WriteLine($"Expected: {expected}, Actual: { actual}");
 
-            result = maxHeap.RemovePeak();
-            Console.WriteLine($"result: {result}");
-            maxHeap.Print();
+            medianFinder.AddNum(3);
+            actual = medianFinder.FindMedian();
+            expected = 2;
+            Console.WriteLine($"Expected: {expected}, Actual: { actual}");
         }
     }
 }
