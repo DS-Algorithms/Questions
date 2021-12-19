@@ -4,6 +4,44 @@
 */
 using System;
 
+public class Solution
+{
+    private int _count = 0;
+    public int GoodNodes(TreeNode root)
+    {
+        Traverse(root, root.val);
+        return _count;
+    }
+
+    public void Traverse(TreeNode node, int max)
+    {
+        if (node == null) return;
+
+        if (node.val >= max)
+            _count++;
+
+        max = Math.Max(node.val, max);
+        Traverse(node.left, max);
+        Traverse(node.right, max);
+    }
+}
+
+/*
+ *Definition for a binary tree node.
+*/
+public class TreeNode
+{
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
+    public TreeNode(int val = 0, TreeNode left = null, TreeNode right = null)
+    {
+        this.val = val;
+        this.left = left;
+        this.right = right;
+    }
+}
+
 class Test
 {
     static void Main()
@@ -35,43 +73,5 @@ class Test
             var actual = sol.GoodNodes(root);
             Console.WriteLine($"Expected: {expected}, Actual  : {actual}");
         }
-    }
-}
-
-/*
- *Definition for a binary tree node.
-*/
-public class TreeNode
-{
-    public int val;
-    public TreeNode left;
-    public TreeNode right;
-    public TreeNode(int val = 0, TreeNode left = null, TreeNode right = null)
-    {
-        this.val = val;
-        this.left = left;
-        this.right = right;
-    }
-}
-
-public class Solution
-{
-    private int _count = 0;
-    public int GoodNodes(TreeNode root)
-    {
-        Traverse(root, root.val);
-        return _count;
-    }
-
-    public void Traverse(TreeNode node, int max)
-    {
-        if (node == null) return;
-
-        if (node.val >= max)
-            _count++;
-
-        max = Math.Max(node.val, max);
-        Traverse(node.left, max);
-        Traverse(node.right, max);
     }
 }
