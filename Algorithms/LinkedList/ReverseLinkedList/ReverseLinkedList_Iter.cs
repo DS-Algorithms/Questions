@@ -57,6 +57,29 @@ public static class Test
             head.next.next.next = new ListNode(4);
             head.next.next.next.next = new ListNode(5);
             var expected = new List<int> { 5, 4, 3, 2, 1 };
+            Console.WriteLine($"Expected: {string.Join(" ->", expected.ToArray())}");
+            var sol = new Solution();
+            var actual = sol.ReverseList(head);
+            Console.Write("Actual  : ");
+            Print(actual);
+        }
+        //case 2
+        {
+            var head = new ListNode(1);
+            head.next = new ListNode(2);
+
+            var expected = new List<int> { 2, 1 };
+            Console.WriteLine($"Expected: {string.Join(" ->", expected.ToArray())}");
+            var sol = new Solution();
+            var actual = sol.ReverseList(head);
+            Console.Write("Actual  : ");
+            Print(actual);
+        }
+        //case 3
+        {
+            ListNode head = null;
+
+            var expected = new List<int> { };
             Console.WriteLine($"Expected: {string.Join("->", expected.ToArray())}");
             var sol = new Solution();
             var actual = sol.ReverseList(head);
