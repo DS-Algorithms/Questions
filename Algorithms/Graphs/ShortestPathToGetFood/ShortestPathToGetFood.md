@@ -85,4 +85,4 @@ Output: -1
  ```
  
 # Solution
-* https://codeinterview.io/NOXYOMDMEC
+ * Graph BFS: [ShortestPathToGetFood](ShortestPathToGetFood.cs)

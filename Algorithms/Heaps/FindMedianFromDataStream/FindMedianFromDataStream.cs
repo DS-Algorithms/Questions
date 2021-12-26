@@ -32,28 +32,11 @@ public class MedianFinder
     {
         if (_even)
         {
-            if (_maxHeap.Size() == 0 || _maxHeap.Peek() < num)
-            {
-                _minHeap.Insert(num);
-            }
-            else
-            {
-                _maxHeap.Insert(num);
-                _minHeap.Insert(_maxHeap.RemovePeak());
-            }
+            _minHeap.Insert(_maxHeap.PushPop(num));
+
         }
         else
-        {
-            if (_minHeap.Peek() > num)
-            {
-                _maxHeap.Insert(num);
-            }
-            else
-            {
-                _minHeap.Insert(num);
-                _maxHeap.Insert(_minHeap.RemovePeak());
-            }
-        }
+            _maxHeap.Insert(_minHeap.PushPop(num));
 
         _even = !_even;
 
@@ -65,6 +48,8 @@ public class MedianFinder
     */
     public double FindMedian()
     {
+        // Console.WriteLine($"maxHea: {string.Join(",", _maxHeap._repo.ToArray())}");
+        // Console.WriteLine($"minHea: {string.Join(",", _minHeap._repo.ToArray())}");
         double result = 0.0;
         if (_even)
         {
@@ -88,71 +73,108 @@ public class MedianFinder
  * obj.AddNum(num);
  * double param_2 = obj.FindMedian();
  */
-
 public class Heap
 {
+
+    public List<int> _repo;
     private string _type;
-    private List<int> _repo;
+    private int _size;
+
     public Heap(string type)
     {
-        _type = type.ToLower();
+        _type = type;
+        _size = 0;
         _repo = new List<int>();
     }
-
     /*
-      Insert an element to the heap
-      Add the new element to the end of the array
-      Bubble up
-     */
-    public void Insert(int val)
+      Add element to the end of the array
+      bubble up
+    */
+    public void Insert(int value)
     {
-        _repo.Add(val);
+        _repo.Add(value);
+        _size++;
         BubbleUp(Size() - 1);
     }
 
     /*
-     Removes the peak element and reheaps
-      result = _repo[0]
-      swap the root element with last element in the array
-      Bubbledown
+      Combines pushing and popping on the heap in a single operation
+      Compare incoming value with root of the heap
+      if it is less than root (for minheap, vice-versa for maxheap)
+        return the element
+      else
+        set result = root
+        replace root withe new value
+        bubbledown from root
+
       return result
-      
-     */
+
+    */
+    public int PushPop(int value)
+    {
+        int result;
+        if (_repo.Count < 1)
+            return value;
+        bool comp = _type == "min" ? value < _repo[0] : value > _repo[0];
+        if (comp)
+            return value;
+        else
+        {
+            result = _repo[0];
+            _repo[0] = value;
+            BubbleDown(0);
+        }
+        return result;
+    }
+    /*
+      result = _repo[0]
+      Swap(0, Size()-1)
+      RemoveThe element from the array
+      BubbleUp(Size()-1)
+
+    */
     public int RemovePeak()
     {
+        if (_repo == null && _repo.Count < 1)
+            return -1;
+
         var result = _repo[0];
         Swap(0, Size() - 1);
-        _repo.RemoveAt(Size() - 1);
+        _size--;
         BubbleDown(0);
+
         return result;
     }
 
-    /*
-     Returns the size of the heap
-    */
-
     public int Size()
     {
-        return _repo.Count;
+        return _size;
+    }
+
+    public int Peek()
+    {
+        return _repo[0];
+    }
+    public void Heapify(List<int> input)
+    {
+        _repo = input;
+        for (int i = 1; i < _repo.Count; i++)
+        {
+            BubbleUp(i);
+        }
+        _size = _repo.Count;
     }
 
     /*
-      Returns the root element without changing the heap
-     */
-    public int Peek()
-    {
-        if (Size() > 0)
-        {
-            return _repo[0];
-        }
-
-        throw new Exception($"Heap is empty cannot peek");
-    }
-
-    /* bubbles down the element at the index 'parent' in the heap*/
+     child = GetChild()
+     while(child < Size() && Compare(child,Parent))
+       Swap(child,parent)
+       parent = child
+       child = GetChild()
+    */
     private void BubbleDown(int parent)
     {
-        int child = GetChild(parent);
+        var child = GetChild(parent);
         while (child < Size() && Compare(child, parent))
         {
             Swap(child, parent);
@@ -161,37 +183,40 @@ public class Heap
         }
     }
 
-    /* return the suitable child to swap the parent with based on the heap type
-     minHeap = return the smallest child for the parent index
-     maxHeap = return the larget child for the parent index
+    /*
+     find the index of the smallest child for the input index
     */
     private int GetChild(int parent)
     {
-        int lChild = parent * 2 + 1;
-        int rChild = parent * 2 + 2;
+        int lchild = parent * 2 + 1;
+        int rchild = parent * 2 + 2;
 
-        if (lChild >= Size())
+        if (lchild >= Size())
         {
-            return lChild;
+            return lchild;
         }
-        if (rChild >= Size())
+        if (rchild >= Size())
         {
-            return lChild;
+            return lchild;
         }
-        if (Compare(lChild, rChild))
+        if (Compare(lchild, rchild))
         {
-            return lChild;
+            return lchild;
         }
-
-        return rChild;
+        return rchild;
     }
 
-    /* 
-     Bubbles an element from the current index based on the heaptype
+    /*
+     get the parent
+     while parent >= 0 && Compare(child,parent)
+       Swap(parent,child)
+       child = parent
+       parent = GetParent() 
+
     */
     private void BubbleUp(int child)
     {
-        int parent = GetParent(child);
+        var parent = GetParent(child);
         while (parent >= 0 && Compare(child, parent))
         {
             Swap(child, parent);
@@ -201,7 +226,7 @@ public class Heap
     }
 
     /*
-    Swaps elements at index1 and index2 
+     swap the elements at index1 and index2 in the repo
     */
     private void Swap(int index1, int index2)
     {
@@ -210,40 +235,35 @@ public class Heap
         _repo[index2] = temp;
     }
 
-    /* 
-     Compares elements at the indices based on the type of the heap
-     MinHeap = returns true if _repo[index1] < _repo[index2] else false
-     MaxHeap = returns true if _repo[index1] > _repo[index2] else false
-     */
+    /*
+     compare the elements at the index1 and index2 in the repo
+      min-heap: _repo[index1] < _repo[index2]
+      max-heap: _repo[index1] > _repo[index2]
+
+    */
     private bool Compare(int index1, int index2)
     {
         switch (_type)
         {
             case "min":
                 return _repo[index1] < _repo[index2];
-
             case "max":
                 return _repo[index1] > _repo[index2];
-
             default:
-                throw new Exception($"Heap type: {_type} is not supported");
+                throw new Exception($"Invalid heap type: {_type}");
         }
     }
 
-    /*
-    Gets the parent index for the element
-    */
     private int GetParent(int child)
     {
         return (child - 1) / 2;
     }
 
-
-
     public void Print()
     {
-        Console.WriteLine($"{string.Join(",", _repo.ToArray())}");
+        Console.WriteLine($"{string.Join(", ", _repo.ToArray())}");
     }
+
 }
 
 public class Test
