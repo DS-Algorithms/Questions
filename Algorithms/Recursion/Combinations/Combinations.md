@@ -1,4 +1,4 @@
-# Combinations
+# 77. Combinations (Medium)
  
 leetcode url: https://leetcode.com/problems/combinations/
  
@@ -35,3 +35,7 @@ You may return the answer in any order.
  1 <= n <= 20
  1 <= k <= n
  ```
+  
+ # Solutions:
+ * Recursion with backtracking [Combinations_BT](Combinations_BT.cs)
+ * Recursion (take or not take): 
